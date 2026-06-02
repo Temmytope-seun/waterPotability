@@ -171,3 +171,84 @@ x=====x]
 [2026-06-02 18:14:35,155: INFO: main: >>>>> stage Data Validation Stage completed <<<<<
 
 x=====x]
+[2026-06-02 19:14:01,814: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-06-02 19:14:01,856: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-06-02 19:14:01,863: INFO: common: yaml file: schema.yaml loaded successfully]
+[2026-06-02 19:14:01,881: INFO: common: created directory at: artifacts_root]
+[2026-06-02 19:14:01,887: INFO: common: created directory at: artifacts/data_transformation]
+[2026-06-02 19:14:01,891: INFO: 3496982105: Reading data from csv file]
+[2026-06-02 19:14:02,216: INFO: 3496982105: Splitting data into train and test set]
+[2026-06-02 19:14:02,327: INFO: 3496982105: Saving train and test set to csv files]
+[2026-06-02 19:14:02,415: INFO: 3496982105: Data transformation completed successfully]
+[2026-06-02 19:14:02,418: INFO: 3496982105: (1199, 12)]
+[2026-06-02 19:14:02,421: INFO: 3496982105: (400, 12)]
+[2026-06-02 20:58:00,594: INFO: main: >>>>> stage Data Ingestion Stage started <<<<<<<]
+[2026-06-02 20:58:00,598: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-06-02 20:58:00,602: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-06-02 20:58:00,606: INFO: common: yaml file: schema.yaml loaded successfully]
+[2026-06-02 20:58:00,608: INFO: common: created directory at: artifacts_root]
+[2026-06-02 20:58:00,609: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-06-02 20:58:00,610: INFO: data_ingestion: File already exists]
+[2026-06-02 20:58:00,614: INFO: main: >>>>> stage Data Ingestion Stage completed <<<<<
+
+x=====x]
+[2026-06-02 20:58:00,615: INFO: main: >>>>> stage Data Validation Stage started <<<<<<<]
+[2026-06-02 20:58:00,617: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-06-02 20:58:00,618: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-06-02 20:58:00,620: INFO: common: yaml file: schema.yaml loaded successfully]
+[2026-06-02 20:58:00,621: INFO: common: created directory at: artifacts_root]
+[2026-06-02 20:58:00,622: INFO: common: created directory at: artifacts/data_validation]
+[2026-06-02 20:58:00,645: INFO: main: >>>>> stage Data Validation Stage completed <<<<<
+
+x=====x]
+[2026-06-02 20:58:00,646: INFO: main: >>>>> stage Data Transformation Stage started <<<<<<<]
+[2026-06-02 20:58:00,647: INFO: data_transformation: Data validation failed. Data transformation cannot be initiated.]
+[2026-06-02 20:58:00,647: ERROR: data_transformation: Data validation failed. Data transformation cannot be initiated.]
+Traceback (most recent call last):
+  File "C:\Users\temmy\OneDrive\Desktop\mlUdemy\dscProject\src\dscProject\pipeline\data_transformation.py", line 24, in initiate_data_transformation
+    raise Exception("Data validation failed. Data transformation cannot be initiated.")
+Exception: Data validation failed. Data transformation cannot be initiated.
+[2026-06-02 20:58:00,650: ERROR: main: Data validation failed. Data transformation cannot be initiated.]
+Traceback (most recent call last):
+  File "C:\Users\temmy\OneDrive\Desktop\mlUdemy\dscProject\main.py", line 32, in <module>
+    data_transformation.initiate_data_transformation()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\temmy\OneDrive\Desktop\mlUdemy\dscProject\src\dscProject\pipeline\data_transformation.py", line 27, in initiate_data_transformation
+    raise e
+  File "C:\Users\temmy\OneDrive\Desktop\mlUdemy\dscProject\src\dscProject\pipeline\data_transformation.py", line 24, in initiate_data_transformation
+    raise Exception("Data validation failed. Data transformation cannot be initiated.")
+Exception: Data validation failed. Data transformation cannot be initiated.
+[2026-06-02 21:00:14,915: INFO: main: >>>>> stage Data Ingestion Stage started <<<<<<<]
+[2026-06-02 21:00:14,919: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-06-02 21:00:14,922: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-06-02 21:00:14,926: INFO: common: yaml file: schema.yaml loaded successfully]
+[2026-06-02 21:00:14,929: INFO: common: created directory at: artifacts_root]
+[2026-06-02 21:00:14,932: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-06-02 21:00:14,934: INFO: data_ingestion: File already exists]
+[2026-06-02 21:00:14,938: INFO: main: >>>>> stage Data Ingestion Stage completed <<<<<
+
+x=====x]
+[2026-06-02 21:00:14,938: INFO: main: >>>>> stage Data Validation Stage started <<<<<<<]
+[2026-06-02 21:00:14,941: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-06-02 21:00:14,942: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-06-02 21:00:14,946: INFO: common: yaml file: schema.yaml loaded successfully]
+[2026-06-02 21:00:14,948: INFO: common: created directory at: artifacts_root]
+[2026-06-02 21:00:14,949: INFO: common: created directory at: artifacts/data_validation]
+[2026-06-02 21:00:14,970: INFO: main: >>>>> stage Data Validation Stage completed <<<<<
+
+x=====x]
+[2026-06-02 21:00:14,970: INFO: main: >>>>> stage Data Transformation Stage started <<<<<<<]
+[2026-06-02 21:00:14,973: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-06-02 21:00:14,974: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-06-02 21:00:14,976: INFO: common: yaml file: schema.yaml loaded successfully]
+[2026-06-02 21:00:14,978: INFO: common: created directory at: artifacts_root]
+[2026-06-02 21:00:14,980: INFO: common: created directory at: artifacts/data_transformation]
+[2026-06-02 21:00:14,981: INFO: data_transformation: Reading data from csv file]
+[2026-06-02 21:00:14,989: INFO: data_transformation: Splitting data into train and test set]
+[2026-06-02 21:00:15,006: INFO: data_transformation: Saving train and test set to csv files]
+[2026-06-02 21:00:15,035: INFO: data_transformation: Data transformation completed successfully]
+[2026-06-02 21:00:15,036: INFO: data_transformation: (1199, 12)]
+[2026-06-02 21:00:15,036: INFO: data_transformation: (400, 12)]
+[2026-06-02 21:00:15,037: INFO: main: >>>>> stage Data Transformation Stage completed <<<<<
+
+x=====x]
