@@ -252,3 +252,143 @@ x=====x]
 [2026-06-02 21:00:15,037: INFO: main: >>>>> stage Data Transformation Stage completed <<<<<
 
 x=====x]
+[2026-06-02 22:01:21,526: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-06-02 22:01:21,565: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-06-02 22:01:21,572: INFO: common: yaml file: schema.yaml loaded successfully]
+[2026-06-02 22:01:21,587: INFO: common: created directory at: artifacts_root]
+[2026-06-02 22:01:21,595: ERROR: 951467416: "'ConfigBox' object has no attribute 'target_column'"]
+Traceback (most recent call last):
+  File "box/box.py", line 605, in box.box.Box.__getitem__
+KeyError: 'TARGET_COLUMN'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "box/box.py", line 644, in box.box.Box.__getattr__
+  File "box/box.py", line 632, in box.box.Box.__getitem__
+box.exceptions.BoxKeyError: "'TARGET_COLUMN'"
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "box/box.py", line 646, in box.box.Box.__getattr__
+AttributeError: 'ConfigBox' object has no attribute 'TARGET_COLUMN'. Did you mean: 'TARGET_COLUMNS'?
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "box/config_box.py", line 29, in box.config_box.ConfigBox.__getattr__
+  File "box/box.py", line 660, in box.box.Box.__getattr__
+box.exceptions.BoxKeyError: "'ConfigBox' object has no attribute 'TARGET_COLUMN'"
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "box/box.py", line 605, in box.box.Box.__getitem__
+KeyError: 'target_column'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "box/box.py", line 644, in box.box.Box.__getattr__
+  File "box/box.py", line 632, in box.box.Box.__getitem__
+box.exceptions.BoxKeyError: "'target_column'"
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "box/box.py", line 646, in box.box.Box.__getattr__
+AttributeError: 'ConfigBox' object has no attribute 'target_column'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\temmy\AppData\Local\Temp\ipykernel_34344\951467416.py", line 3, in <module>
+    model_trainer_config = config_manager.get_model_trainer_config()
+  File "C:\Users\temmy\AppData\Local\Temp\ipykernel_34344\175134374.py", line 16, in get_model_trainer_config
+    schema = self.schema.TARGET_COLUMN
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "box/config_box.py", line 31, in box.config_box.ConfigBox.__getattr__
+  File "box/box.py", line 660, in box.box.Box.__getattr__
+box.exceptions.BoxKeyError: "'ConfigBox' object has no attribute 'target_column'". Did you mean: 'TARGET_COLUMNS'?
+[2026-06-02 22:03:39,711: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-06-02 22:03:39,719: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-06-02 22:03:39,730: INFO: common: yaml file: schema.yaml loaded successfully]
+[2026-06-02 22:03:39,734: INFO: common: created directory at: artifacts_root]
+[2026-06-02 22:03:39,737: INFO: 2583058951: Loading training data]
+[2026-06-02 22:03:39,957: INFO: 2583058951: Splitting features and target variable]
+[2026-06-02 22:03:40,006: INFO: 2583058951: Training the ElasticNet model]
+[2026-06-02 22:03:40,130: ERROR: 951467416: [Errno 2] No such file or directory: 'artifacts/model_trainer\\model\\model.joblib']
+Traceback (most recent call last):
+  File "C:\Users\temmy\AppData\Local\Temp\ipykernel_34344\951467416.py", line 5, in <module>
+    model_trainer.train_model()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\temmy\AppData\Local\Temp\ipykernel_34344\2583058951.py", line 20, in train_model
+    joblib.dump(model, model_path)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\temmy\OneDrive\Desktop\mlUdemy\dscProject\venv\Lib\site-packages\joblib\numpy_pickle.py", line 599, in dump
+    with open(filename, "wb") as f:
+         ~~~~^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'artifacts/model_trainer\\model\\model.joblib'
+[2026-06-02 22:04:47,297: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-06-02 22:04:47,300: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-06-02 22:04:47,307: INFO: common: yaml file: schema.yaml loaded successfully]
+[2026-06-02 22:04:47,312: INFO: common: created directory at: artifacts_root]
+[2026-06-02 22:04:47,313: INFO: 3872843093: Loading training data]
+[2026-06-02 22:04:47,324: INFO: 3872843093: Splitting features and target variable]
+[2026-06-02 22:04:47,328: INFO: 3872843093: Training the ElasticNet model]
+[2026-06-02 22:04:47,337: INFO: common: created directory at: artifacts/model_trainer\model]
+[2026-06-02 22:04:47,356: INFO: 3872843093: Model saved at artifacts/model_trainer\model\model.joblib]
+[2026-06-02 22:36:38,952: INFO: main: >>>>> stage Data Ingestion Stage started <<<<<<<]
+[2026-06-02 22:36:38,957: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-06-02 22:36:38,960: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-06-02 22:36:38,964: INFO: common: yaml file: schema.yaml loaded successfully]
+[2026-06-02 22:36:38,967: INFO: common: created directory at: artifacts_root]
+[2026-06-02 22:36:38,968: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-06-02 22:36:38,970: INFO: data_ingestion: File already exists]
+[2026-06-02 22:36:38,979: INFO: main: >>>>> stage Data Ingestion Stage completed <<<<<
+
+x=====x]
+[2026-06-02 22:36:38,979: INFO: main: >>>>> stage Data Validation Stage started <<<<<<<]
+[2026-06-02 22:36:38,985: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-06-02 22:36:38,989: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-06-02 22:36:38,993: INFO: common: yaml file: schema.yaml loaded successfully]
+[2026-06-02 22:36:38,994: INFO: common: created directory at: artifacts_root]
+[2026-06-02 22:36:38,995: INFO: common: created directory at: artifacts/data_validation]
+[2026-06-02 22:36:39,019: INFO: main: >>>>> stage Data Validation Stage completed <<<<<
+
+x=====x]
+[2026-06-02 22:36:39,021: INFO: main: >>>>> stage Data Transformation Stage started <<<<<<<]
+[2026-06-02 22:36:39,027: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-06-02 22:36:39,029: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-06-02 22:36:39,033: INFO: common: yaml file: schema.yaml loaded successfully]
+[2026-06-02 22:36:39,035: INFO: common: created directory at: artifacts_root]
+[2026-06-02 22:36:39,038: INFO: common: created directory at: artifacts/data_transformation]
+[2026-06-02 22:36:39,039: INFO: data_transformation: Reading data from csv file]
+[2026-06-02 22:36:39,046: INFO: data_transformation: Splitting data into train and test set]
+[2026-06-02 22:36:39,062: INFO: data_transformation: Saving train and test set to csv files]
+[2026-06-02 22:36:39,092: INFO: data_transformation: Data transformation completed successfully]
+[2026-06-02 22:36:39,093: INFO: data_transformation: (1199, 12)]
+[2026-06-02 22:36:39,093: INFO: data_transformation: (400, 12)]
+[2026-06-02 22:36:39,094: INFO: main: >>>>> stage Data Transformation Stage completed <<<<<
+
+x=====x]
+[2026-06-02 22:36:39,094: INFO: main: >>>>> stage Model Trainer Stage started <<<<<<<]
+[2026-06-02 22:36:39,096: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-06-02 22:36:39,098: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-06-02 22:36:39,106: INFO: common: yaml file: schema.yaml loaded successfully]
+[2026-06-02 22:36:39,108: INFO: common: created directory at: artifacts_root]
+[2026-06-02 22:36:39,110: INFO: common: created directory at: artifacts/model_trainer]
+[2026-06-02 22:36:39,110: INFO: model_trainer: Loading training data]
+[2026-06-02 22:36:39,117: INFO: model_trainer: Splitting features and target variable]
+[2026-06-02 22:36:39,126: INFO: model_trainer: Training the ElasticNet model]
+[2026-06-02 22:36:39,136: INFO: common: created directory at: artifacts/model_trainer\model]
+[2026-06-02 22:36:39,144: INFO: model_trainer: Model saved at artifacts/model_trainer\model\model.joblib]
+[2026-06-02 22:36:39,145: INFO: main: >>>>> stage Model Trainer Stage completed <<<<<
+
+x=====x]
+[2026-06-02 22:38:41,756: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-06-02 22:38:41,778: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-06-02 22:38:41,791: INFO: common: yaml file: schema.yaml loaded successfully]
+[2026-06-02 22:38:41,799: INFO: common: created directory at: artifacts_root]
+[2026-06-02 22:38:41,805: INFO: common: created directory at: artifacts/data_ingestion]
