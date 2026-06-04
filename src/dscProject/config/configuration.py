@@ -83,9 +83,9 @@ class ConfigurationManager:
             test_data_path=config.test_data_path,
             model_path = config.model_path,
             all_params=params,
-            metric_file_name = config.metric_file_name,
+            metrics_file_path = config.metrics_file_path,
             target_column = schema.name,
-            mlflow_uri="https://dagshub.com/krishnaik06/datascienceproject.mlflow"
+            mlflow_uri="https://dagshub.com/Temmytope-seun/dscProject.mlflow"
 
 
         )

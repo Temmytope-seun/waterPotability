@@ -3,6 +3,8 @@ from src.dscProject.pipeline.data_ingestion import DataIngestionTrainingPipeline
 from src.dscProject.pipeline.data_validation import DataValidationTrainingPipeline
 from src.dscProject.pipeline.data_transformation import DataTransformationTrainingPipeline
 from src.dscProject.pipeline.model_trainer import ModelTrainingPipeline
+from src.dscProject.pipeline.model_evaluation import ModelEvaluationPipeline
+
 
 STAGE_NAME="Data Ingestion Stage"
 
@@ -42,6 +44,16 @@ try:
     model_trainer = ModelTrainingPipeline()
     model_trainer.initiate_model_trainer()
     logger.info(f">>>>> stage {STAGE_NAME} completed <<<<<\n\nx=====x")
+except Exception as e:
+    logger.exception(e)
+    raise e
+
+STAGE_NAME="Model Evaluation Stage"
+try:
+    logger.info(f">>>>> stage {STAGE_NAME} started <<<<<<<")
+    model_evaluation = ModelEvaluationPipeline()
+    model_evaluation.initiate_model_evaluation()
+    logger.info(f">>>>> stage {STAGE_NAME} completed <<<<<\n\nx=====x") 
 except Exception as e:
     logger.exception(e)
     raise e
