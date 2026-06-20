@@ -656,3 +656,173 @@ x=====x]
 [2026-06-20 13:17:28,886: INFO: _internal:  * Debugger PIN: 285-930-593]
 [2026-06-20 13:17:38,702: INFO: _internal: 127.0.0.1 - - [20/Jun/2026 13:17:38] "GET / HTTP/1.1" 200 -]
 [2026-06-20 13:18:01,055: INFO: _internal: 127.0.0.1 - - [20/Jun/2026 13:18:01] "POST /predict HTTP/1.1" 200 -]
+[2026-06-20 13:23:18,934: INFO: main: >>>>> stage Data Ingestion Stage started <<<<<<<]
+[2026-06-20 13:23:18,940: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-06-20 13:23:18,943: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-06-20 13:23:18,948: INFO: common: yaml file: schema.yaml loaded successfully]
+[2026-06-20 13:23:18,949: INFO: common: created directory at: artifacts_root]
+[2026-06-20 13:23:18,952: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-06-20 13:23:19,188: ERROR: main: HTTP Error 404: Not Found]
+Traceback (most recent call last):
+  File "C:\Users\temmy\OneDrive\Desktop\mlUdemy\dscProject\main.py", line 14, in <module>
+    data_ingestion.initiate_data_ingestion()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\temmy\OneDrive\Desktop\mlUdemy\dscProject\src\dscProject\pipeline\data_ingestion.py", line 15, in initiate_data_ingestion
+    data_ingestion.download_file()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\temmy\OneDrive\Desktop\mlUdemy\dscProject\src\dscProject\components\data_ingestion.py", line 13, in download_file
+    filename, headers = request.urlretrieve(
+                        ~~~~~~~~~~~~~~~~~~~^
+        url=self.config.source_URL,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        filename=self.config.local_data_file
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\temmy\OneDrive\Desktop\mlUdemy\dscProject\venv\Lib\urllib\request.py", line 212, in urlretrieve
+    with contextlib.closing(urlopen(url, data)) as fp:
+                            ~~~~~~~^^^^^^^^^^^
+  File "C:\Users\temmy\OneDrive\Desktop\mlUdemy\dscProject\venv\Lib\urllib\request.py", line 187, in urlopen
+    return opener.open(url, data, timeout)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\temmy\OneDrive\Desktop\mlUdemy\dscProject\venv\Lib\urllib\request.py", line 493, in open
+    response = meth(req, response)
+  File "C:\Users\temmy\OneDrive\Desktop\mlUdemy\dscProject\venv\Lib\urllib\request.py", line 602, in http_response
+    response = self.parent.error(
+        'http', request, response, code, msg, hdrs)
+  File "C:\Users\temmy\OneDrive\Desktop\mlUdemy\dscProject\venv\Lib\urllib\request.py", line 531, in error
+    return self._call_chain(*args)
+           ~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\temmy\OneDrive\Desktop\mlUdemy\dscProject\venv\Lib\urllib\request.py", line 464, in _call_chain
+    result = func(*args)
+  File "C:\Users\temmy\OneDrive\Desktop\mlUdemy\dscProject\venv\Lib\urllib\request.py", line 611, in http_error_default
+    raise HTTPError(req.full_url, code, msg, hdrs, fp)
+urllib.error.HTTPError: HTTP Error 404: Not Found
+[2026-06-20 13:31:25,510: INFO: main: >>>>> stage Data Ingestion Stage started <<<<<<<]
+[2026-06-20 13:31:25,516: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-06-20 13:31:25,518: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-06-20 13:31:25,520: INFO: common: yaml file: schema.yaml loaded successfully]
+[2026-06-20 13:31:25,521: INFO: common: created directory at: artifacts_root]
+[2026-06-20 13:31:25,522: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-06-20 13:31:26,253: INFO: data_ingestion: artifacts/data_ingestion/water_potability.csv downloaded with info: 
+Connection: close
+Content-Length: 525187
+Cache-Control: max-age=300
+Content-Security-Policy: default-src 'none'; style-src 'unsafe-inline'; sandbox
+Content-Type: text/plain; charset=utf-8
+ETag: "0163fcb1b8640d4b33797d0dbaed15d8862c22e648be6db5adbc7e646bb20888"
+Strict-Transport-Security: max-age=31536000
+X-Content-Type-Options: nosniff
+X-Frame-Options: deny
+X-XSS-Protection: 1; mode=block
+X-GitHub-Request-Id: 26B2:9B66E:1925D9:319F10:6A36881D
+Accept-Ranges: bytes
+Date: Sat, 20 Jun 2026 12:31:26 GMT
+Via: 1.1 varnish
+X-Served-By: cache-lhr-egll1980090-LHR
+X-Cache: MISS
+X-Cache-Hits: 0
+X-Timer: S1781958686.321073,VS0,VE137
+Vary: Authorization,Accept-Encoding
+Access-Control-Allow-Origin: *
+Cross-Origin-Resource-Policy: cross-origin
+X-Fastly-Request-ID: 75726bea0874853565e34e271cb3b63a8d0994b6
+Expires: Sat, 20 Jun 2026 12:36:26 GMT
+Source-Age: 0
+
+]
+[2026-06-20 13:31:26,253: INFO: main: >>>>> stage Data Ingestion Stage completed <<<<<
+
+x=====x]
+[2026-06-20 13:31:26,253: INFO: main: >>>>> stage Data Validation Stage started <<<<<<<]
+[2026-06-20 13:31:26,258: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-06-20 13:31:26,259: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-06-20 13:31:26,263: INFO: common: yaml file: schema.yaml loaded successfully]
+[2026-06-20 13:31:26,264: INFO: common: created directory at: artifacts_root]
+[2026-06-20 13:31:26,266: INFO: common: created directory at: artifacts/data_validation]
+[2026-06-20 13:31:26,285: INFO: main: >>>>> stage Data Validation Stage completed <<<<<
+
+x=====x]
+[2026-06-20 13:31:26,285: INFO: main: >>>>> stage Data Transformation Stage started <<<<<<<]
+[2026-06-20 13:31:26,291: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-06-20 13:31:26,295: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-06-20 13:31:26,298: INFO: common: yaml file: schema.yaml loaded successfully]
+[2026-06-20 13:31:26,299: INFO: common: created directory at: artifacts_root]
+[2026-06-20 13:31:26,300: INFO: common: created directory at: artifacts/data_transformation]
+[2026-06-20 13:31:26,301: INFO: data_transformation: Reading data]
+[2026-06-20 13:31:26,319: INFO: data_transformation: Imputing missing values with column medians]
+[2026-06-20 13:31:26,331: INFO: data_transformation: Splitting into train and test sets]
+[2026-06-20 13:31:26,382: INFO: data_transformation: Train shape: (2457, 10) | Test shape: (819, 10)]
+[2026-06-20 13:31:26,382: INFO: main: >>>>> stage Data Transformation Stage completed <<<<<
+
+x=====x]
+[2026-06-20 13:31:26,382: INFO: main: >>>>> stage Model Trainer Stage started <<<<<<<]
+[2026-06-20 13:31:26,385: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-06-20 13:31:26,387: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-06-20 13:31:26,390: INFO: common: yaml file: schema.yaml loaded successfully]
+[2026-06-20 13:31:26,391: INFO: common: created directory at: artifacts_root]
+[2026-06-20 13:31:26,392: INFO: common: created directory at: artifacts/model_trainer]
+[2026-06-20 13:31:26,393: INFO: model_trainer: Loading training data]
+[2026-06-20 13:31:26,402: INFO: model_trainer: Training RandomForestClassifier]
+[2026-06-20 13:31:26,931: INFO: common: created directory at: artifacts/model_trainer\model]
+[2026-06-20 13:31:27,029: INFO: model_trainer: Model saved at artifacts/model_trainer\model\model.joblib]
+[2026-06-20 13:31:27,030: INFO: main: >>>>> stage Model Trainer Stage completed <<<<<
+
+x=====x]
+[2026-06-20 13:31:27,030: INFO: main: >>>>> stage Model Evaluation Stage started <<<<<<<]
+[2026-06-20 13:31:27,034: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-06-20 13:31:27,036: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-06-20 13:31:27,042: INFO: common: yaml file: schema.yaml loaded successfully]
+[2026-06-20 13:31:27,044: INFO: common: created directory at: artifacts_root]
+[2026-06-20 13:31:27,045: INFO: common: created directory at: artifacts/model_evaluation]
+[2026-06-20 13:31:30,761: ERROR: main: API request to endpoint /api/2.0/mlflow/runs/create failed with error code 404 != 200. Response body: '']
+Traceback (most recent call last):
+  File "C:\Users\temmy\OneDrive\Desktop\mlUdemy\dscProject\main.py", line 55, in <module>
+    model_evaluation.initiate_model_evaluation()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\temmy\OneDrive\Desktop\mlUdemy\dscProject\src\dscProject\pipeline\model_evaluation.py", line 15, in initiate_model_evaluation
+    model_evaluation.log_into_mlflow()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\temmy\OneDrive\Desktop\mlUdemy\dscProject\src\dscProject\components\model_evaluation.py", line 32, in log_into_mlflow
+    with mlflow.start_run():
+         ~~~~~~~~~~~~~~~~^^
+  File "C:\Users\temmy\OneDrive\Desktop\mlUdemy\dscProject\venv\Lib\site-packages\mlflow\tracking\fluent.py", line 644, in start_run
+    active_run_obj = client.create_run(
+        experiment_id=exp_id_for_run,
+        tags=resolved_tags,
+        run_name=run_name,
+    )
+  File "C:\Users\temmy\OneDrive\Desktop\mlUdemy\dscProject\venv\Lib\site-packages\mlflow\tracking\client.py", line 602, in create_run
+    return self._tracking_client.create_run(experiment_id, start_time, tags, run_name)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\temmy\OneDrive\Desktop\mlUdemy\dscProject\venv\Lib\site-packages\mlflow\telemetry\track.py", line 30, in wrapper
+    result = func(*args, **kwargs)
+  File "C:\Users\temmy\OneDrive\Desktop\mlUdemy\dscProject\venv\Lib\site-packages\mlflow\tracking\_tracking_service\client.py", line 186, in create_run
+    return self.store.create_run(
+           ~~~~~~~~~~~~~~~~~~~~~^
+        experiment_id=experiment_id,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        run_name=run_name,
+        ^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\temmy\OneDrive\Desktop\mlUdemy\dscProject\venv\Lib\site-packages\mlflow\store\tracking\rest_store.py", line 380, in create_run
+    response_proto = self._call_endpoint(CreateRun, req_body)
+  File "C:\Users\temmy\OneDrive\Desktop\mlUdemy\dscProject\venv\Lib\site-packages\mlflow\store\tracking\rest_store.py", line 243, in _call_endpoint
+    return call_endpoint(
+        self.get_host_creds(),
+    ...<4 lines>...
+        retry_timeout_seconds=retry_timeout_seconds,
+    )
+  File "C:\Users\temmy\OneDrive\Desktop\mlUdemy\dscProject\venv\Lib\site-packages\mlflow\utils\rest_utils.py", line 658, in call_endpoint
+    response = verify_rest_response(
+        response,
+        endpoint,
+        expected_status=expected_status,
+    )
+  File "C:\Users\temmy\OneDrive\Desktop\mlUdemy\dscProject\venv\Lib\site-packages\mlflow\utils\rest_utils.py", line 374, in verify_rest_response
+    raise MlflowException(
+    ...<4 lines>...
+    )
+mlflow.exceptions.MlflowException: API request to endpoint /api/2.0/mlflow/runs/create failed with error code 404 != 200. Response body: ''
