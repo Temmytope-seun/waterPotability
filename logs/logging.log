@@ -897,3 +897,27 @@ x=====x]
 [2026-06-20 14:04:57,769: INFO: _internal:  * Restarting with stat]
 [2026-06-20 14:05:07,741: WARNING: _internal:  * Debugger is active!]
 [2026-06-20 14:05:07,750: INFO: _internal:  * Debugger PIN: 285-930-593]
+[2026-06-20 19:18:28,457: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.85:5000]
+[2026-06-20 19:18:28,462: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2026-06-20 19:18:28,467: INFO: _internal:  * Restarting with stat]
+[2026-06-20 19:18:36,327: WARNING: _internal:  * Debugger is active!]
+[2026-06-20 19:18:36,337: INFO: _internal:  * Debugger PIN: 718-569-583]
+[2026-06-20 19:18:45,893: INFO: _internal: 192.168.0.85 - - [20/Jun/2026 19:18:45] "GET / HTTP/1.1" 200 -]
+[2026-06-20 19:19:31,125: INFO: _internal: 192.168.0.85 - - [20/Jun/2026 19:19:31] "POST /predict HTTP/1.1" 200 -]
+[2026-06-20 19:19:45,116: INFO: _internal: 192.168.0.85 - - [20/Jun/2026 19:19:45] "GET / HTTP/1.1" 200 -]
+[2026-06-20 20:41:41,445: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.85:5000]
+[2026-06-20 20:41:41,448: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2026-06-20 20:41:41,455: INFO: _internal:  * Restarting with stat]
+[2026-06-20 20:41:47,001: WARNING: _internal:  * Debugger is active!]
+[2026-06-20 20:41:47,015: INFO: _internal:  * Debugger PIN: 718-569-583]
+[2026-06-20 20:41:53,572: INFO: _internal: 192.168.0.85 - - [20/Jun/2026 20:41:53] "GET / HTTP/1.1" 200 -]
+[2026-06-20 20:42:15,977: INFO: _internal: 192.168.0.85 - - [20/Jun/2026 20:42:15] "POST /predict HTTP/1.1" 200 -]
+[2026-06-20 20:42:31,416: INFO: _internal: 192.168.0.85 - - [20/Jun/2026 20:42:31] "GET / HTTP/1.1" 200 -]
+[2026-06-20 20:42:50,637: INFO: _internal: 192.168.0.85 - - [20/Jun/2026 20:42:50] "POST /predict HTTP/1.1" 200 -]
+[2026-06-20 20:47:07,061: INFO: _internal: 192.168.0.85 - - [20/Jun/2026 20:47:07] "GET / HTTP/1.1" 200 -]

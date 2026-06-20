@@ -12,6 +12,22 @@ from src.waterPotability.pipeline.model_evaluation import ModelEvaluationPipelin
 
 app = Flask(__name__)
 
+FEATURE_FIELDS = (
+    'ph', 'hardness', 'solids', 'chloramines', 'sulfate',
+    'conductivity', 'organic_carbon', 'trihalomethanes', 'turbidity'
+)
+
+
+def build_feature_vector(form_data):
+    return np.array(
+        [float(form_data[field]) for field in FEATURE_FIELDS]
+    ).reshape(1, len(FEATURE_FIELDS))
+
+
+def get_prediction_label(result):
+    return "Potable — Safe to Drink" if result == 1 else "Not Potable — Unsafe"
+
+
 @app.route('/', methods=['GET'])
 def home():
     return render_template('index.html')
@@ -27,30 +43,20 @@ def train():
 
 @app.route('/predict', methods=['POST', 'GET'])
 def evaluate():
-    if request.method == 'POST':
-        try:
-            ph                  = float(request.form['ph'])
-            hardness            = float(request.form['hardness'])
-            solids              = float(request.form['solids'])
-            chloramines         = float(request.form['chloramines'])
-            sulfate             = float(request.form['sulfate'])
-            conductivity        = float(request.form['conductivity'])
-            organic_carbon      = float(request.form['organic_carbon'])
-            trihalomethanes     = float(request.form['trihalomethanes'])
-            turbidity           = float(request.form['turbidity'])
+    if request.method != 'POST':
+        return render_template('index.html')
 
-            data = np.array([
-                ph, hardness, solids, chloramines, sulfate,
-                conductivity, organic_carbon, trihalomethanes, turbidity
-            ]).reshape(1, 9)
-
-            result = PredictionPipeline().predict(data)[0]
-            label = "Potable — Safe to Drink" if result == 1 else "Not Potable — Unsafe"
-            return render_template('results.html', prediction=label, safe=(result == 1))
-        except Exception as e:
-            print('Exception:', str(e))
-            return 'Something went wrong!'
-    return render_template('index.html')
+    try:
+        data = build_feature_vector(request.form)
+        result = PredictionPipeline().predict(data)[0]
+        return render_template(
+            'results.html',
+            prediction=get_prediction_label(result),
+            safe=(result == 1)
+        )
+    except Exception as e:
+        print('Exception:', str(e))
+        return 'Something went wrong!'
 
 
 if __name__ == '__main__':

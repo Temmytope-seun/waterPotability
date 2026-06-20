@@ -21,7 +21,7 @@ This article walks through a production-style ML pipeline for predicting red win
 The project is organised around a single source of truth: a `src/` package with four internal layers.
 
 ```
-dscProject/
+waterPotability/
 ├── config/
 │   └── config.yaml          # all file paths and URLs
 ├── params.yaml              # model hyperparameters
@@ -33,7 +33,6 @@ dscProject/
 │   ├── components/          # stage logic (data ingestion, training, etc.)
 │   ├── pipeline/            # orchestration wrappers
 │   └── utils/               # shared helpers
-├── research/                # exploratory notebooks (isolated)
 ├── tests/                   # unit tests
 ├── app.py                   # Flask web application
 └── main.py                  # full pipeline entry point
