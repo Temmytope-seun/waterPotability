@@ -2,18 +2,17 @@ artifacts_root: artifacts_root
 
 data_ingestion:
   root_dir: artifacts/data_ingestion
-  source_URL: https://github.com/krishnaik06/datasets/raw/refs/heads/main/winequality-data.zip
-  local_data_file: artifacts/data_ingestion/data.zip
-  unzip_dir: artifacts/data_ingestion
-  
+  source_URL: https://raw.githubusercontent.com/dsrscientist/dataset1/master/water_potability.csv
+  local_data_file: artifacts/data_ingestion/water_potability.csv
+
 data_validation:
   root_dir: artifacts/data_validation
-  unzip_data_dir: artifacts/data_ingestion/winequality-red.csv
+  data_dir: artifacts/data_ingestion/water_potability.csv
   STATUS_FILE: artifacts/data_validation/status.txt
 
 data_transformation:
   root_dir: artifacts/data_transformation
-  data_path: artifacts/data_ingestion/winequality-red.csv
+  data_path: artifacts/data_ingestion/water_potability.csv
 
 model_trainer:
   root_dir: artifacts/model_trainer

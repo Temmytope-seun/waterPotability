@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wine Quality Prediction</title>
+    <title>Water Potability Prediction</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -12,18 +12,28 @@
             padding: 20px;
         }
 
-        h1 {
+        h1 { text-align: center; }
+
+        p.subtitle {
             text-align: center;
+            color: #555;
+            margin-top: -10px;
+            margin-bottom: 30px;
         }
 
-        .form-group {
-            margin-bottom: 15px;
-        }
+        .form-group { margin-bottom: 15px; }
 
         label {
             display: block;
             margin-bottom: 5px;
             font-weight: bold;
+        }
+
+        .hint {
+            font-size: 0.8em;
+            color: #777;
+            font-weight: normal;
+            margin-left: 6px;
         }
 
         input {
@@ -35,92 +45,72 @@
         button {
             width: 100%;
             padding: 12px;
-            background-color: #4CAF50;
+            background-color: #1565C0;
             color: white;
             border: none;
             cursor: pointer;
             font-size: 16px;
+            border-radius: 4px;
         }
 
-        button:hover {
-            opacity: 0.9;
-        }
-
-        .prediction {
-            margin-top: 20px;
-            padding: 15px;
-            background-color: #f4f4f4;
-            border-radius: 5px;
-            text-align: center;
-        }
+        button:hover { opacity: 0.9; }
     </style>
 </head>
 <body>
 
-    <h1>Wine Quality Prediction</h1>
+    <h1>Water Potability Prediction</h1>
+    <p class="subtitle">Enter water sample measurements to predict if it is safe to drink.</p>
 
     <form action="/predict" method="POST">
 
         <div class="form-group">
-            <label for="fixed_acidity">Fixed Acidity</label>
-            <input type="number" step="any" name="fixed_acidity" required>
+            <label>pH <span class="hint">(0 – 14)</span></label>
+            <input type="number" step="any" name="ph" placeholder="e.g. 7.0" required>
         </div>
 
         <div class="form-group">
-            <label for="volatile_acidity">Volatile Acidity</label>
-            <input type="number" step="any" name="volatile_acidity" required>
+            <label>Hardness <span class="hint">(mg/L)</span></label>
+            <input type="number" step="any" name="hardness" placeholder="e.g. 196.0" required>
         </div>
 
         <div class="form-group">
-            <label for="citric_acid">Citric Acid</label>
-            <input type="number" step="any" name="citric_acid" required>
+            <label>Solids (TDS) <span class="hint">(ppm)</span></label>
+            <input type="number" step="any" name="solids" placeholder="e.g. 20791.0" required>
         </div>
 
         <div class="form-group">
-            <label for="residual_sugar">Residual Sugar</label>
-            <input type="number" step="any" name="residual_sugar" required>
+            <label>Chloramines <span class="hint">(ppm)</span></label>
+            <input type="number" step="any" name="chloramines" placeholder="e.g. 7.3" required>
         </div>
 
         <div class="form-group">
-            <label for="chlorides">Chlorides</label>
-            <input type="number" step="any" name="chlorides" required>
+            <label>Sulfate <span class="hint">(mg/L)</span></label>
+            <input type="number" step="any" name="sulfate" placeholder="e.g. 368.0" required>
         </div>
 
         <div class="form-group">
-            <label for="free_sulfur_dioxide">Free Sulfur Dioxide</label>
-            <input type="number" step="any" name="free_sulfur_dioxide" required>
+            <label>Conductivity <span class="hint">(μS/cm)</span></label>
+            <input type="number" step="any" name="conductivity" placeholder="e.g. 564.0" required>
         </div>
 
         <div class="form-group">
-            <label for="total_sulfur_dioxide">Total Sulfur Dioxide</label>
-            <input type="number" step="any" name="total_sulfur_dioxide" required>
+            <label>Organic Carbon <span class="hint">(ppm)</span></label>
+            <input type="number" step="any" name="organic_carbon" placeholder="e.g. 10.4" required>
         </div>
 
         <div class="form-group">
-            <label for="density">Density</label>
-            <input type="number" step="any" name="density" required>
+            <label>Trihalomethanes <span class="hint">(μg/L)</span></label>
+            <input type="number" step="any" name="trihalomethanes" placeholder="e.g. 86.0" required>
         </div>
 
         <div class="form-group">
-            <label for="pH">pH</label>
-            <input type="number" step="any" name="pH" required>
+            <label>Turbidity <span class="hint">(NTU)</span></label>
+            <input type="number" step="any" name="turbidity" placeholder="e.g. 2.96" required>
         </div>
 
-        <div class="form-group">
-            <label for="sulphates">Sulphates</label>
-            <input type="number" step="any" name="sulphates" required>
-        </div>
-
-        <div class="form-group">
-            <label for="alcohol">Alcohol</label>
-            <input type="number" step="any" name="alcohol" required>
-        </div>
-
-        <button type="submit">Predict Quality</button>
+        <button type="submit">Check Water Safety</button>
 
     </form>
-
-    
 
 </body>
 </html>

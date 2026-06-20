@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prediction Result</title>
-
+    <title>Water Safety Result</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -25,53 +24,56 @@
             width: 500px;
         }
 
-        h1 {
-            color: #333;
-            margin-bottom: 20px;
-        }
+        h1 { color: #333; margin-bottom: 20px; }
 
         .result {
-            font-size: 2rem;
+            font-size: 1.6rem;
             font-weight: bold;
-            color: #4CAF50;
             margin: 20px 0;
+            padding: 16px;
+            border-radius: 8px;
         }
 
-        .description {
-            color: #666;
-            margin-bottom: 30px;
+        .result.safe {
+            color: #2E7D32;
+            background-color: #E8F5E9;
         }
+
+        .result.unsafe {
+            color: #B71C1C;
+            background-color: #FFEBEE;
+        }
+
+        .description { color: #666; margin-bottom: 30px; }
 
         .btn {
             display: inline-block;
             padding: 12px 24px;
-            background-color: #4CAF50;
+            background-color: #1565C0;
             color: white;
             text-decoration: none;
             border-radius: 6px;
             font-size: 16px;
         }
 
-        .btn:hover {
-            background-color: #45a049;
-        }
+        .btn:hover { background-color: #0D47A1; }
     </style>
-
 </head>
 <body>
 
     <div class="container">
-        <h1>Wine Quality Prediction</h1>
+        <h1>Water Potability Prediction</h1>
 
-        <div class="result">
+        <div class="result {{ 'safe' if safe else 'unsafe' }}">
             {{ prediction }}
         </div>
 
         <div class="description">
-            Predicted Wine Quality Score
+            Based on the physicochemical measurements provided, the water sample is predicted to be
+            <strong>{{ 'safe' if safe else 'unsafe' }}</strong> for human consumption.
         </div>
 
-        <a href="/" class="btn">Predict Another Wine</a>
+        <a href="/" class="btn">Test Another Sample</a>
     </div>
 
 </body>
