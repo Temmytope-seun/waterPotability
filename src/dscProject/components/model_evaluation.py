@@ -4,9 +4,12 @@ import mlflow
 import mlflow.sklearn
 import joblib
 from urllib.parse import urlparse
+from dotenv import load_dotenv
 from src.dscProject.entity.config_entity import ModelEvaluationConfig
 from src.dscProject.utils.common import save_json
 from pathlib import Path
+
+load_dotenv()
 
 
 class ModelEvaluation:

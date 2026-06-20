@@ -1,5 +1,8 @@
 from flask import Flask, request, render_template
+from dotenv import load_dotenv
 import numpy as np
+
+load_dotenv()
 from src.dscProject.pipeline.prediction_pipeline import PredictionPipeline
 from src.dscProject.pipeline.data_ingestion import DataIngestionTrainingPipeline
 from src.dscProject.pipeline.data_validation import DataValidationTrainingPipeline

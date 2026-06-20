@@ -1,4 +1,7 @@
+from dotenv import load_dotenv
 from src.dscProject import logger
+
+load_dotenv()
 from src.dscProject.pipeline.data_ingestion import DataIngestionTrainingPipeline
 from src.dscProject.pipeline.data_validation import DataValidationTrainingPipeline
 from src.dscProject.pipeline.data_transformation import DataTransformationTrainingPipeline
