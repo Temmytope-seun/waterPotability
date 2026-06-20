@@ -1,4 +1,4 @@
-# Unit Testing Machine Learning Pipelines: A Practical Guide
+﻿# Unit Testing Machine Learning Pipelines: A Practical Guide
 
 *Why testing ML code is hard, and exactly how to do it anyway*
 
@@ -59,8 +59,8 @@ The `DataIngestion` component has two responsibilities: download a zip file from
 Every component takes a typed config dataclass. In tests, we build one directly:
 
 ```python
-from src.dscProject.entity.config_entity import DataIngestionConfig
-from src.dscProject.components.data_ingestion import DataIngestion
+from src.waterPotability.entity.config_entity import DataIngestionConfig
+from src.waterPotability.components.data_ingestion import DataIngestion
 
 def _make_config():
     return DataIngestionConfig(
@@ -76,8 +76,8 @@ Using a real config object (rather than a `MagicMock`) means we test the actual 
 ### Test: Download is skipped when file exists
 
 ```python
-@mock.patch("src.dscProject.components.data_ingestion.os.path.exists", return_value=True)
-@mock.patch("src.dscProject.components.data_ingestion.request.urlretrieve")
+@mock.patch("src.waterPotability.components.data_ingestion.os.path.exists", return_value=True)
+@mock.patch("src.waterPotability.components.data_ingestion.request.urlretrieve")
 def test_download_file_skips_when_present(self, mock_retrieve, _mock_exists):
     DataIngestion(config=_make_config()).download_file()
     mock_retrieve.assert_not_called()
@@ -90,8 +90,8 @@ def test_download_file_skips_when_present(self, mock_retrieve, _mock_exists):
 ### Test: Download is triggered when file is missing
 
 ```python
-@mock.patch("src.dscProject.components.data_ingestion.os.path.exists", return_value=False)
-@mock.patch("src.dscProject.components.data_ingestion.request.urlretrieve")
+@mock.patch("src.waterPotability.components.data_ingestion.os.path.exists", return_value=False)
+@mock.patch("src.waterPotability.components.data_ingestion.request.urlretrieve")
 def test_download_file_fetches_when_missing(self, mock_retrieve, _mock_exists):
     mock_retrieve.return_value = ("data.zip", {})
     DataIngestion(config=_make_config()).download_file()
@@ -106,8 +106,8 @@ This verifies not just that `urlretrieve` was called, but that it was called wit
 ### Test: Extraction goes to the right directory
 
 ```python
-@mock.patch("src.dscProject.components.data_ingestion.os.makedirs")
-@mock.patch("src.dscProject.components.data_ingestion.zipfile.ZipFile")
+@mock.patch("src.waterPotability.components.data_ingestion.os.makedirs")
+@mock.patch("src.waterPotability.components.data_ingestion.zipfile.ZipFile")
 def test_extract_zip_file_extracts_to_unzip_dir(self, mock_zipfile, _mock_makedirs):
     mock_zip = mock.MagicMock()
     mock_zipfile.return_value.__enter__ = mock.Mock(return_value=mock_zip)
@@ -131,7 +131,7 @@ The validation component has a known bug in the original code: when validation f
 
 ```python
 @mock.patch("builtins.open", new_callable=mock.mock_open)
-@mock.patch("src.dscProject.components.data_validation.pd.read_csv")
+@mock.patch("src.waterPotability.components.data_validation.pd.read_csv")
 def test_returns_true_for_valid_columns(self, mock_read_csv, _mock_open):
     mock_read_csv.return_value = pd.DataFrame(columns=list(SCHEMA.keys()))
     result = DataValidation(config=_make_config()).validate_all_columns()
@@ -144,7 +144,7 @@ We mock `pd.read_csv` to return a DataFrame with the expected columns, and mock 
 
 ```python
 @mock.patch("builtins.open", new_callable=mock.mock_open)
-@mock.patch("src.dscProject.components.data_validation.pd.read_csv")
+@mock.patch("src.waterPotability.components.data_validation.pd.read_csv")
 def test_invalid_columns_do_not_raise_type_error(self, mock_read_csv, _mock_open):
     mock_read_csv.return_value = pd.DataFrame(columns=["fixed acidity", "bad_col"])
     try:
@@ -164,7 +164,7 @@ The transformation stage splits a DataFrame and saves two CSV files. We test bot
 ### Test: Exactly two files are saved
 
 ```python
-@mock.patch("src.dscProject.components.data_transformation.pd.read_csv")
+@mock.patch("src.waterPotability.components.data_transformation.pd.read_csv")
 def test_creates_two_csv_files(self, mock_read_csv):
     mock_read_csv.return_value = _sample_df()
     with mock.patch.object(pd.DataFrame, "to_csv") as mock_to_csv:
@@ -177,7 +177,7 @@ We use `mock.patch.object` to patch the `to_csv` method on the `pd.DataFrame` cl
 ### Test: Output paths are under root_dir
 
 ```python
-@mock.patch("src.dscProject.components.data_transformation.pd.read_csv")
+@mock.patch("src.waterPotability.components.data_transformation.pd.read_csv")
 def test_output_paths_contain_root_dir(self, mock_read_csv):
     mock_read_csv.return_value = _sample_df()
     config = _make_config()
@@ -202,9 +202,9 @@ The model trainer is one of the more interesting components to test because we c
 ### Test: The saved model is actually an ElasticNet
 
 ```python
-@mock.patch("src.dscProject.components.model_trainer.joblib.dump")
-@mock.patch("src.dscProject.components.model_trainer.create_directories")
-@mock.patch("src.dscProject.components.model_trainer.pd.read_csv")
+@mock.patch("src.waterPotability.components.model_trainer.joblib.dump")
+@mock.patch("src.waterPotability.components.model_trainer.create_directories")
+@mock.patch("src.waterPotability.components.model_trainer.pd.read_csv")
 def test_saved_model_is_elasticnet(self, mock_read_csv, _mock_dirs, mock_dump):
     mock_read_csv.return_value = _sample_df()
     ModelTrainer(config=_make_config()).train_model()
@@ -220,9 +220,9 @@ This test is valuable because it makes the contract explicit: this stage must pr
 ### Test: Hyperparameters are applied correctly
 
 ```python
-@mock.patch("src.dscProject.components.model_trainer.joblib.dump")
-@mock.patch("src.dscProject.components.model_trainer.create_directories")
-@mock.patch("src.dscProject.components.model_trainer.pd.read_csv")
+@mock.patch("src.waterPotability.components.model_trainer.joblib.dump")
+@mock.patch("src.waterPotability.components.model_trainer.create_directories")
+@mock.patch("src.waterPotability.components.model_trainer.pd.read_csv")
 def test_elasticnet_uses_configured_hyperparams(self, mock_read_csv, _mock_dirs, mock_dump):
     mock_read_csv.return_value = _sample_df()
     config = _make_config()
@@ -266,10 +266,10 @@ The second test is particularly useful: it verifies the RMSE formula by computin
 ### Testing the MLflow Integration
 
 ```python
-@mock.patch("src.dscProject.components.model_evaluation.mlflow")
-@mock.patch("src.dscProject.components.model_evaluation.save_json")
-@mock.patch("src.dscProject.components.model_evaluation.joblib.load")
-@mock.patch("src.dscProject.components.model_evaluation.pd.read_csv")
+@mock.patch("src.waterPotability.components.model_evaluation.mlflow")
+@mock.patch("src.waterPotability.components.model_evaluation.save_json")
+@mock.patch("src.waterPotability.components.model_evaluation.joblib.load")
+@mock.patch("src.waterPotability.components.model_evaluation.pd.read_csv")
 def test_logs_all_three_metrics(self, mock_read_csv, mock_load,
                                 _mock_save_json, mock_mlflow):
     mock_read_csv.return_value = self._make_test_df()
@@ -295,7 +295,7 @@ After working through all five components, three techniques cover almost every t
 ### 1. Patch the module-level name
 
 ```python
-@mock.patch("src.dscProject.components.data_ingestion.os.path.exists", return_value=False)
+@mock.patch("src.waterPotability.components.data_ingestion.os.path.exists", return_value=False)
 ```
 
 Always patch where the name is *used*, not where it is *defined*. When `data_ingestion.py` does `import os`, it gets its own reference to `os`. Patching `os.path.exists` globally does not affect it — you must patch `data_ingestion.os.path.exists`.

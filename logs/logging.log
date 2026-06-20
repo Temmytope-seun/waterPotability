@@ -881,3 +881,19 @@ x=====x]
 [2026-06-20 13:53:47,314: INFO: main: >>>>> stage Model Evaluation Stage completed <<<<<
 
 x=====x]
+[2026-06-20 13:56:55,155: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.85:5000]
+[2026-06-20 13:56:55,156: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2026-06-20 13:56:55,161: INFO: _internal:  * Restarting with stat]
+[2026-06-20 13:57:01,160: WARNING: _internal:  * Debugger is active!]
+[2026-06-20 13:57:01,170: INFO: _internal:  * Debugger PIN: 285-930-593]
+[2026-06-20 13:57:48,715: INFO: _internal: 192.168.0.85 - - [20/Jun/2026 13:57:48] "GET / HTTP/1.1" 200 -]
+[2026-06-20 13:57:53,598: INFO: _internal: 192.168.0.85 - - [20/Jun/2026 13:57:53] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -]
+[2026-06-20 13:58:31,280: INFO: _internal: 192.168.0.85 - - [20/Jun/2026 13:58:31] "POST /predict HTTP/1.1" 200 -]
+[2026-06-20 13:58:40,791: INFO: _internal: 192.168.0.85 - - [20/Jun/2026 13:58:40] "GET / HTTP/1.1" 200 -]
+[2026-06-20 14:04:54,317: INFO: _internal:  * Detected change in 'C:\\Users\\temmy\\OneDrive\\Desktop\\mlUdemy\\dscProject\\app.py', reloading]
+[2026-06-20 14:04:57,769: INFO: _internal:  * Restarting with stat]
+[2026-06-20 14:05:07,741: WARNING: _internal:  * Debugger is active!]
+[2026-06-20 14:05:07,750: INFO: _internal:  * Debugger PIN: 285-930-593]

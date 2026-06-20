@@ -1,4 +1,4 @@
-# Building a Production-Ready ML Pipeline in Python: Architecture and Design Patterns
+﻿# Building a Production-Ready ML Pipeline in Python: Architecture and Design Patterns
 
 *How to structure a machine learning project that goes beyond the notebook*
 
@@ -26,7 +26,7 @@ dscProject/
 │   └── config.yaml          # all file paths and URLs
 ├── params.yaml              # model hyperparameters
 ├── schema.yaml              # expected column names and types
-├── src/dscProject/
+├── src/waterPotability/
 │   ├── constants/           # file path constants
 │   ├── entity/              # typed config dataclasses
 │   ├── config/              # ConfigurationManager

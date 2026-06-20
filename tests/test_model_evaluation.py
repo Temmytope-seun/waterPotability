@@ -1,11 +1,11 @@
-import unittest
+﻿import unittest
 from unittest import mock
 from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from src.dscProject.entity.config_entity import ModelEvaluationConfig
-from src.dscProject.components.model_evaluation import ModelEvaluation
+from src.waterPotability.entity.config_entity import ModelEvaluationConfig
+from src.waterPotability.components.model_evaluation import ModelEvaluation
 
 
 def _make_config():
@@ -70,10 +70,10 @@ class TestEvalMetrics(unittest.TestCase):
 
 class TestLogIntoMlflow(unittest.TestCase):
 
-    @mock.patch("src.dscProject.components.model_evaluation.mlflow")
-    @mock.patch("src.dscProject.components.model_evaluation.save_json")
-    @mock.patch("src.dscProject.components.model_evaluation.joblib.load")
-    @mock.patch("src.dscProject.components.model_evaluation.pd.read_csv")
+    @mock.patch("src.waterPotability.components.model_evaluation.mlflow")
+    @mock.patch("src.waterPotability.components.model_evaluation.save_json")
+    @mock.patch("src.waterPotability.components.model_evaluation.joblib.load")
+    @mock.patch("src.waterPotability.components.model_evaluation.pd.read_csv")
     def test_sets_tracking_uri(self, mock_read_csv, mock_load, _mock_save_json, mock_mlflow):
         df = _make_test_df()
         mock_read_csv.return_value = df
@@ -87,10 +87,10 @@ class TestLogIntoMlflow(unittest.TestCase):
         ModelEvaluation(config=config).log_into_mlflow()
         mock_mlflow.set_tracking_uri.assert_called_once_with(config.mlflow_uri)
 
-    @mock.patch("src.dscProject.components.model_evaluation.mlflow")
-    @mock.patch("src.dscProject.components.model_evaluation.save_json")
-    @mock.patch("src.dscProject.components.model_evaluation.joblib.load")
-    @mock.patch("src.dscProject.components.model_evaluation.pd.read_csv")
+    @mock.patch("src.waterPotability.components.model_evaluation.mlflow")
+    @mock.patch("src.waterPotability.components.model_evaluation.save_json")
+    @mock.patch("src.waterPotability.components.model_evaluation.joblib.load")
+    @mock.patch("src.waterPotability.components.model_evaluation.pd.read_csv")
     def test_logs_all_three_metrics(self, mock_read_csv, mock_load, _mock_save_json, mock_mlflow):
         df = _make_test_df()
         mock_read_csv.return_value = df
@@ -105,10 +105,10 @@ class TestLogIntoMlflow(unittest.TestCase):
         logged = {call.args[0] for call in mock_mlflow.log_metric.call_args_list}
         self.assertSetEqual(logged, {"Accuracy", "F1_Score", "ROC_AUC"})
 
-    @mock.patch("src.dscProject.components.model_evaluation.mlflow")
-    @mock.patch("src.dscProject.components.model_evaluation.save_json")
-    @mock.patch("src.dscProject.components.model_evaluation.joblib.load")
-    @mock.patch("src.dscProject.components.model_evaluation.pd.read_csv")
+    @mock.patch("src.waterPotability.components.model_evaluation.mlflow")
+    @mock.patch("src.waterPotability.components.model_evaluation.save_json")
+    @mock.patch("src.waterPotability.components.model_evaluation.joblib.load")
+    @mock.patch("src.waterPotability.components.model_evaluation.pd.read_csv")
     def test_saves_metrics_json_with_correct_keys(self, mock_read_csv, mock_load,
                                                    mock_save_json, mock_mlflow):
         df = _make_test_df()

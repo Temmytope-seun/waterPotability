@@ -1,11 +1,11 @@
-import unittest
+﻿import unittest
 from unittest import mock
 from pathlib import Path
 import pandas as pd
 import numpy as np
 
-from src.dscProject.entity.config_entity import DataTransformationConfig
-from src.dscProject.components.data_transformation import DataTransformation
+from src.waterPotability.entity.config_entity import DataTransformationConfig
+from src.waterPotability.components.data_transformation import DataTransformation
 
 
 def _make_config():
@@ -37,14 +37,14 @@ def _sample_df(n=40, with_nulls=False):
 
 class TestDataTransformation(unittest.TestCase):
 
-    @mock.patch("src.dscProject.components.data_transformation.pd.read_csv")
+    @mock.patch("src.waterPotability.components.data_transformation.pd.read_csv")
     def test_creates_two_csv_files(self, mock_read_csv):
         mock_read_csv.return_value = _sample_df()
         with mock.patch.object(pd.DataFrame, "to_csv") as mock_to_csv:
             DataTransformation(config=_make_config()).train_test_split()
             self.assertEqual(mock_to_csv.call_count, 2)
 
-    @mock.patch("src.dscProject.components.data_transformation.pd.read_csv")
+    @mock.patch("src.waterPotability.components.data_transformation.pd.read_csv")
     def test_output_paths_contain_root_dir(self, mock_read_csv):
         mock_read_csv.return_value = _sample_df()
         config = _make_config()
@@ -55,7 +55,7 @@ class TestDataTransformation(unittest.TestCase):
         for path in saved_paths:
             self.assertIn(str(config.root_dir), path)
 
-    @mock.patch("src.dscProject.components.data_transformation.pd.read_csv")
+    @mock.patch("src.waterPotability.components.data_transformation.pd.read_csv")
     def test_missing_values_are_imputed(self, mock_read_csv):
         df_with_nulls = _sample_df(n=40, with_nulls=True)
         self.assertTrue(df_with_nulls.isnull().any().any())

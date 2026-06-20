@@ -1,12 +1,12 @@
-import unittest
+﻿import unittest
 from unittest import mock
 from pathlib import Path
 import numpy as np
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 
-from src.dscProject.entity.config_entity import ModelTrainerConfig
-from src.dscProject.components.model_trainer import ModelTrainer
+from src.waterPotability.entity.config_entity import ModelTrainerConfig
+from src.waterPotability.components.model_trainer import ModelTrainer
 
 
 def _make_config():
@@ -40,26 +40,26 @@ def _sample_df(n=60):
 
 class TestModelTrainer(unittest.TestCase):
 
-    @mock.patch("src.dscProject.components.model_trainer.joblib.dump")
-    @mock.patch("src.dscProject.components.model_trainer.create_directories")
-    @mock.patch("src.dscProject.components.model_trainer.pd.read_csv")
+    @mock.patch("src.waterPotability.components.model_trainer.joblib.dump")
+    @mock.patch("src.waterPotability.components.model_trainer.create_directories")
+    @mock.patch("src.waterPotability.components.model_trainer.pd.read_csv")
     def test_model_is_saved(self, mock_read_csv, _mock_dirs, mock_dump):
         mock_read_csv.return_value = _sample_df()
         ModelTrainer(config=_make_config()).train_model()
         mock_dump.assert_called_once()
 
-    @mock.patch("src.dscProject.components.model_trainer.joblib.dump")
-    @mock.patch("src.dscProject.components.model_trainer.create_directories")
-    @mock.patch("src.dscProject.components.model_trainer.pd.read_csv")
+    @mock.patch("src.waterPotability.components.model_trainer.joblib.dump")
+    @mock.patch("src.waterPotability.components.model_trainer.create_directories")
+    @mock.patch("src.waterPotability.components.model_trainer.pd.read_csv")
     def test_saved_model_is_random_forest(self, mock_read_csv, _mock_dirs, mock_dump):
         mock_read_csv.return_value = _sample_df()
         ModelTrainer(config=_make_config()).train_model()
         saved_model = mock_dump.call_args[0][0]
         self.assertIsInstance(saved_model, RandomForestClassifier)
 
-    @mock.patch("src.dscProject.components.model_trainer.joblib.dump")
-    @mock.patch("src.dscProject.components.model_trainer.create_directories")
-    @mock.patch("src.dscProject.components.model_trainer.pd.read_csv")
+    @mock.patch("src.waterPotability.components.model_trainer.joblib.dump")
+    @mock.patch("src.waterPotability.components.model_trainer.create_directories")
+    @mock.patch("src.waterPotability.components.model_trainer.pd.read_csv")
     def test_model_path_contains_model_name(self, mock_read_csv, _mock_dirs, mock_dump):
         mock_read_csv.return_value = _sample_df()
         config = _make_config()
@@ -67,9 +67,9 @@ class TestModelTrainer(unittest.TestCase):
         saved_path = mock_dump.call_args[0][1]
         self.assertIn(config.model_name, str(saved_path))
 
-    @mock.patch("src.dscProject.components.model_trainer.joblib.dump")
-    @mock.patch("src.dscProject.components.model_trainer.create_directories")
-    @mock.patch("src.dscProject.components.model_trainer.pd.read_csv")
+    @mock.patch("src.waterPotability.components.model_trainer.joblib.dump")
+    @mock.patch("src.waterPotability.components.model_trainer.create_directories")
+    @mock.patch("src.waterPotability.components.model_trainer.pd.read_csv")
     def test_random_forest_uses_configured_hyperparams(self, mock_read_csv, _mock_dirs, mock_dump):
         mock_read_csv.return_value = _sample_df()
         config = _make_config()

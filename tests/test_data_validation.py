@@ -1,10 +1,10 @@
-import unittest
+﻿import unittest
 from unittest import mock
 from pathlib import Path
 import pandas as pd
 
-from src.dscProject.entity.config_entity import DataValidationConfig
-from src.dscProject.components.data_validation import DataValidation
+from src.waterPotability.entity.config_entity import DataValidationConfig
+from src.waterPotability.components.data_validation import DataValidation
 
 
 SCHEMA = {
@@ -33,14 +33,14 @@ def _make_config():
 class TestDataValidation(unittest.TestCase):
 
     @mock.patch("builtins.open", new_callable=mock.mock_open)
-    @mock.patch("src.dscProject.components.data_validation.pd.read_csv")
+    @mock.patch("src.waterPotability.components.data_validation.pd.read_csv")
     def test_returns_true_for_valid_columns(self, mock_read_csv, _mock_open):
         mock_read_csv.return_value = pd.DataFrame(columns=list(SCHEMA.keys()))
         result = DataValidation(config=_make_config()).validate_all_columns()
         self.assertTrue(result)
 
     @mock.patch("builtins.open", new_callable=mock.mock_open)
-    @mock.patch("src.dscProject.components.data_validation.pd.read_csv")
+    @mock.patch("src.waterPotability.components.data_validation.pd.read_csv")
     def test_returns_false_for_extra_columns(self, mock_read_csv, _mock_open):
         columns = list(SCHEMA.keys()) + ["unexpected_col"]
         mock_read_csv.return_value = pd.DataFrame(columns=columns)
@@ -48,7 +48,7 @@ class TestDataValidation(unittest.TestCase):
         self.assertFalse(result)
 
     @mock.patch("builtins.open", new_callable=mock.mock_open)
-    @mock.patch("src.dscProject.components.data_validation.pd.read_csv")
+    @mock.patch("src.waterPotability.components.data_validation.pd.read_csv")
     def test_invalid_columns_do_not_raise_type_error(self, mock_read_csv, _mock_open):
         mock_read_csv.return_value = pd.DataFrame(columns=["ph", "bad_col"])
         try:
@@ -57,7 +57,7 @@ class TestDataValidation(unittest.TestCase):
             self.fail("validate_all_columns raised TypeError on invalid columns")
 
     @mock.patch("builtins.open", new_callable=mock.mock_open)
-    @mock.patch("src.dscProject.components.data_validation.pd.read_csv")
+    @mock.patch("src.waterPotability.components.data_validation.pd.read_csv")
     def test_status_written_to_file(self, mock_read_csv, mock_open):
         mock_read_csv.return_value = pd.DataFrame(columns=list(SCHEMA.keys()))
         DataValidation(config=_make_config()).validate_all_columns()

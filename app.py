@@ -1,14 +1,14 @@
-from flask import Flask, request, render_template
+﻿from flask import Flask, request, render_template
 from dotenv import load_dotenv
 import numpy as np
 
 load_dotenv()
-from src.dscProject.pipeline.prediction_pipeline import PredictionPipeline
-from src.dscProject.pipeline.data_ingestion import DataIngestionTrainingPipeline
-from src.dscProject.pipeline.data_validation import DataValidationTrainingPipeline
-from src.dscProject.pipeline.data_transformation import DataTransformationTrainingPipeline
-from src.dscProject.pipeline.model_trainer import ModelTrainingPipeline
-from src.dscProject.pipeline.model_evaluation import ModelEvaluationPipeline
+from src.waterPotability.pipeline.prediction_pipeline import PredictionPipeline
+from src.waterPotability.pipeline.data_ingestion import DataIngestionTrainingPipeline
+from src.waterPotability.pipeline.data_validation import DataValidationTrainingPipeline
+from src.waterPotability.pipeline.data_transformation import DataTransformationTrainingPipeline
+from src.waterPotability.pipeline.model_trainer import ModelTrainingPipeline
+from src.waterPotability.pipeline.model_evaluation import ModelEvaluationPipeline
 
 app = Flask(__name__)
 
